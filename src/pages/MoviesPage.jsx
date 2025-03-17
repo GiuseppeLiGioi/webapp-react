@@ -1,6 +1,13 @@
 function MoviesPage () {
     return(
-        <h2>MoviesPage!</h2>
+        <>
+        <h2>MoviesPage! Titolo singolo Film</h2>
+        <div>
+
+        </div>
+        
+        </>
+        
     )
 }
 

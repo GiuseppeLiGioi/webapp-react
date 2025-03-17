@@ -1,6 +1,13 @@
 function HomePage () {
     return(
-        <h2>HomePage!</h2>
+        <>
+        <h2 className="text-danger">HomePage!</h2>
+        <div className="row row-cols-3">
+
+        </div>
+        
+        </>
+        
     )
 }
 

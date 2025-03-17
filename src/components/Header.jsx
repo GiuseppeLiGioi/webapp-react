@@ -5,7 +5,7 @@ function Header ()  {
 return (
     <header>
     <NavLink className="nav-item nav-link" to='/'>
-    Home
+    HomePage
     </NavLink>
     </header>
 
