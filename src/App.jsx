@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route Component={ DefaultLayout }>
       <Route path="/" Component={ HomePage } />
-      <Route path="/books/:id" Component={ MoviesPage } />
+      <Route path="/movies/:id" Component={ MoviesPage } />
 
    
 

@@ -16,7 +16,7 @@ function MovieCard ( {movie} ){
                 </p>
                 
 
-                <Link to={`movies/:${id}`}>Read More!</Link>
+                <Link to={`/movies/${id}`}>Read More!</Link>
 
 
             </div>

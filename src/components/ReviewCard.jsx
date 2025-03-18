@@ -1,15 +1,17 @@
-function ReviewCard (){
+
+
+function ReviewCard ( {review} ){
+    const {id, name, vote, text } = review;
     return(
         <>
 
-        <div className="card mb-4">
+        <div key={id} className="card mb-4">
             <div className="card-body">
+                <h5>{name}</h5>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Vitae, ullam voluptatibus.
-                    Beatae error voluptatem facilis eligendi aliquid, possimus explicabo perferendis, accusantium animi recusandae minima. 
-                    Placeat suscipit iure animi quod necessitatibus.
+                    {text}
                 </p>
+                <span>Voto:{vote}</span>
 
             </div>
             
