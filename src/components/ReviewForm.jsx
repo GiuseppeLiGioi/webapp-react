@@ -86,7 +86,7 @@ function ReviewForm ({movie_id, reloadReview}) {
                                 onChange={setFieldValue}
                             />
                         </div>
-                        <div className="btn btn-primary">
+                        <div className="btn btn-primary mt-3">
                         <button type="submit">Crea recensione!</button>
                         </div>
                         
