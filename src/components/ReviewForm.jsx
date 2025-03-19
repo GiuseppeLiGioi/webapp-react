@@ -16,7 +16,7 @@ function ReviewForm ({movie_id, reloadReview}) {
     const [formData, setFormData] = useState(initialValue);
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // Previene il comportamento di refresh della pagina
+        e.preventDefault(); //evita il refresh della pagina
     
         axios
           .post(endpoint, formData, {
