@@ -8,6 +8,10 @@ import MoviesController from '../controllers/MoviesController.js';
 router.get('/', MoviesController.index);
   
   // Show
-  router.get('/:id', MoviesController.show);
+router.get('/:id', MoviesController.show);
+
+//storeReview
+router.post('/:id/reviews', MoviesController.storeReview)
+
 
 export default router;

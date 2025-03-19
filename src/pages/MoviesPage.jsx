@@ -13,23 +13,17 @@ function MoviesPage () {
         console.log("fetching movie...")
 
         axios.get(`http://localhost:3000/movies/${id}`)
-        .then (res => {setMovie(res.data)})
-        .catch(err => console.error(err))
+        .then ((res) => setMovie(res.data))
+        .catch((err) => console.error(err))
     }
 
     useEffect(fetchMovie, [id]);
 
-    //come ho fatto primka creo la funzione renderMovie
+    //come ho fatto prima creo la funzione renderReviews
     const renderReviews = () => {
-       
-        if (!movie.reviews || movie.reviews.length === 0) {
-            return <p>No reviews available</p>;
-        } else {
-           
-            return movie.reviews.map((review) => {
-                return <ReviewCard key={review.id} review={review} />;
-            });
-        }
+        return movie.reviews?.map((review)=>{
+            return <ReviewCard key={movie.id} review={review} />
+        })
     };
     
 

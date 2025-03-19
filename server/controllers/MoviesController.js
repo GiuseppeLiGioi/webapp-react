@@ -39,26 +39,68 @@ function show(req, res) {
 
     //DB MYSQL
 
-    const {id} = req.params;
+    const { id } = req.params;
 
-    const sql = 'SELECT * FROM movies WHERE id = ?'
+    const sqlMovies = 'SELECT * FROM movies WHERE id = ?';
+    const sqlReviews = 'SELECT * FROM reviews WHERE movie_id = ?';
 
-    connection.query(sql, [id], (err, results) => {
+    connection.query(sqlMovies, [id], (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: "Database query error" });
+        }
 
-        if(err) return res.status(500).json({
-            error: "Database query error"
-        })
-        if( results.length === 0 ) return res.status(404).json({
-            status:404,
-            error: "Not found",
-            message: "Film non trovato"
-        })
-        
-        res.json(results[0])
-        }) 
+        // Se il film non esiste, restituiamo errore 404
+        if (results.length === 0) {
+            return res.status(404).json({
+                status: 404,
+                error: "Not found",
+                message: "Film non trovato"
+            });
+        }
+
+        const movie = results[0]; 
+
+        // Secondo query: Ottiengo le recensioni per il film
+        connection.query(sqlReviews, [id], (err, reviewResults) => {
+            if (err) {
+                return res.status(500).json({ error: "Database query error" });
+            }
+
+            // Aggiungiamo le recensioni all'oggetto film
+            movie.reviews = reviewResults;
+
+            // Invia la risposta JSON con il film e le sue recensioni
+            res.json(movie);
+        });
+    });
 };
 
+function storeReview(req,res) {
+    //recuperare l'id
+    const {id} = req.params;
 
+    //recuperare le informazioni del body
+    const {text, name, vote} = req.body;
+
+    //preparazione della query
+    const sql = 'INSERT INTO reviews (text, name, vote, movie_id) VALUES (?,?,?,?)'
+
+    //eseguiamo la query
+    connection.query(sql, [text, name, vote, id],  (err, results) => {
+        if(err) return res.status(500).json({
+            error: 'databse store error'
+        })
+        res.status(201)
+        res.json({
+            message: 'review added ',
+            id: results.insertId
+        })
+
+
+    })
+
+
+}
 
 // esportiamo tutto
-export default { index, show  };
+export default { index, show, storeReview };

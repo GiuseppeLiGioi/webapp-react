@@ -10,10 +10,12 @@ app.use(cors({
     origin:process.env.FRONTEND_APP
 }))
 
+app.use( express.json())
+
 
 app.use( "/movies" , moviesRouter )
 
-app.use( express.json())
+
 
 app.get( "/movies", (req, res) => {
     res.send("Server movie tutto ok")
