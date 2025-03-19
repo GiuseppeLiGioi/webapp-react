@@ -13,9 +13,9 @@ function App() {
       <Route Component={ DefaultLayout }>
       <Route path="/" Component={ HomePage } />
       <Route path="/movies/:id" Component={ MoviesPage } />
+      
 
    
-
       </Route>
     </Routes>
     
