@@ -81,7 +81,7 @@ function ReviewForm ({movie_id, reloadReview}) {
                                 max={5}
                                 name="vote"
                                 className="form-control"
-                                placeholder="inserisci il tuo rating"
+                                placeholder="inserisci il tuo voto"
                                 value={formData.vote}
                                 onChange={setFieldValue}
                             />
