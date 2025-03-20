@@ -1,17 +1,24 @@
 import MovieCard from "../components/MovieCard"
 import ReviewCard from "../components/ReviewCard"
 import axios from "axios"
-import {useState, useEffect} from "react"
+import {useState, useEffect, useContext} from "react"
+import GlobalContext from "../contexts/GlobalContext"
+
+
 function HomePage () {
+    const {setIsLoading} = useContext(GlobalContext);
 
     const [movies, setMovies] = useState( [] )
     //funzione fetch per i film
     const fetchMovies = () => {
         console.log("fetching movies...")
 
+        setIsLoading(true)
+
         axios.get("http://localhost:3000/movies")
         .then(res => {setMovies(res.data)})
         .catch(err => console.log(err))
+        .then(() => setIsLoading(false))
     }
 
     useEffect(fetchMovies, []);

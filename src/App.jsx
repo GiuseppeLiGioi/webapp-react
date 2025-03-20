@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import MoviesPage from "./pages/MoviesPage"
 import GlobalContext from "./contexts/GlobalContext"
 import { useState } from "react"
+
 function App() {
  
   const [isLoading, setIsLoading] = useState(false);
